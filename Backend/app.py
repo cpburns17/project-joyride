@@ -18,7 +18,21 @@ db.init_app(app)
 def index():
     return "Home"
 
-# write routes here
+@app.get('/home')
+#where posts are
+
+@app.get('/profile/<int:id>')
+#where your own profile + user profiles
+
+@app.get('/saved')
+#locate your saved posts
+
+@app.get('/login')
+def user_login():
+    pass
+#login page **important** do not set this up until everything else is setup
+
+
 
 
 
