@@ -29,6 +29,8 @@ class Transporter_Post(db.Model, SerializerMixin):
 #this is for special requests (ie: compensation, requirements to drive/ride, etc.)
     request = db.Column(db.String)
 
+    users = db.relationship('User', back_populates = 'transporter')
+
 
 
 
@@ -43,10 +45,11 @@ class User(db.Model, SerializerMixin):
 #social media (can just be a url link)
     social = db.Column(db.String)
 
-
-
     transporter_id = db.Column(db.Integer, db.ForeignKey('transporters_table.id'))
     passenger_id = db.Column(db.Integer, db.ForeignKey('passengers_table.id'))
+
+    passenger = db.relationship('Passenger_Post', back_populates = 'users')
+    transporter = db.relationship('Transporter_Post', back_populates = 'users')
 
 
 
@@ -65,3 +68,5 @@ class Passenger_Post(db.Model, SerializerMixin):
 #this is for special requests (ie: compensation, requirements to drive/ride, etc.)
     request = db.Column(db.String)
 
+
+    users = db.relationship('User', back_populates = 'passenger')
