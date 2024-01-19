@@ -12,27 +12,15 @@ metadata = MetaData(naming_convention={
 db = SQLAlchemy(metadata=metadata)
 
 
-class Transporter(db.Model, SerializerMixin):
+class Transporter_Post(db.Model, SerializerMixin):
     __tablename__ = 'transporters_table'
 
     id = db.Column(db.Integer, primary_key = True)
 #validate name has both first and last
-    name = db.Column(db.String, nullable = False)
-#validate age >= 18
-    age = db.Column(db.Integer, nullabe = False)
-#type of vehicle
     vehicle = db.Column(db.String, nullable = False)
 #number of spots available for passengers
     seats = db.Column(db.Integer)
-
-
-
-
-class Post(db.Model, SerializerMixin):
-    __tablename__ = 'posts_table'
-
-    id = db.Column(db.Integer, primary_key = True)
-#this is the type of event, front end will need to assign a variable or number to index through bc it will be a drop down selection
+#type of event (concert, festival, general commute, work?)
     event = db.Column(db.String, nullable = False)
 #this is where the person is located (cross streets? address?)
     location = db.Column(db.String, nullable = False)
@@ -41,16 +29,39 @@ class Post(db.Model, SerializerMixin):
 #this is for special requests (ie: compensation, requirements to drive/ride, etc.)
     request = db.Column(db.String)
 
+
+
+
+class User(db.Model, SerializerMixin):
+    __tablename__ = 'users_table'
+
+    id = db.Column(db.Integer, primary_key = True)
+#this is the type of event, front end will need to assign a variable or number to index through bc it will be a drop down selection
+    name = db.Column(db.String, nullable = False)
+#validate age >= 18
+    age = db.Column(db.Integer, nullabe = False)
+#social media (can just be a url link)
+    social = db.Column(db.String)
+
+
+
     transporter_id = db.Column(db.Integer, db.ForeignKey('transporters_table.id'))
     passenger_id = db.Column(db.Integer, db.ForeignKey('passengers_table.id'))
 
 
 
-class Passenger(db.Model, SerializerMixin):
+class Passenger_Post(db.Model, SerializerMixin):
     __tablename__ = 'passengers_table'
 
     id = db.Column(db.Integer, primary_key = True)
-#validate name has both first and last
-    name = db.Column(db.String, nullable = False)
-#validate age >= 18
-    age = db.Column(db.Integer, nullabe = False)
+#give 2 options to choose from such as $ or None
+    offer = db.Column(db.String, nullable = False)
+#type of event (concert, festival, general commute, work?)
+    event = db.Column(db.String, nullable = False)
+#this is where the person is located (cross streets? address?)
+    location = db.Column(db.String, nullable = False)
+#this is to share general info 
+    details = db.Column(db.String)
+#this is for special requests (ie: compensation, requirements to drive/ride, etc.)
+    request = db.Column(db.String)
+
