@@ -1,11 +1,12 @@
-
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS
 
-from models import db #import models
+from models import db, User, Passenger_Post, Transporter_Post #import models
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins" : "*"}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
@@ -17,6 +18,16 @@ db.init_app(app)
 @app.get('/')
 def index():
     return "Home"
+
+
+@app.get('/all_posts')
+def get_all_posts():
+    transporter_posts = Transporter_Post.query.all()
+    passenger_posts = Passenger_Post.query.all()
+    return {
+        "transporter_posts": [t.to_dict() for t in transporter_posts],
+        "passenger_posts": [p.to_dict() for p in passenger_posts]
+    }
 
 #USER
 

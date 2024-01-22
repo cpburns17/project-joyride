@@ -1,5 +1,7 @@
 import React from "react";
 import App from './components/App.jsx'
+import Home from './components/Home.jsx'
+
 
 const routes = [
     {
@@ -7,11 +9,11 @@ const routes = [
       element: <App />,
       errorElement: <h1>Something went wrong!</h1>,
       children : [
-        // {
-        //     path: "/home",
-        //     element: <Home/>,
-        //     errorElement: <h1>Something went wrong!</h1>
-        // },
+        {
+            path: "/home",
+            element: <Home/>,
+            errorElement: <h1>Something went wrong!</h1>
+        },
         // {
         //     path: "/profile",
         //     element: <Profile />,
