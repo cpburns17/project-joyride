@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Home from './Home'
 import React, {useState} from 'react'
 
-function Posts ({posts}) {
+function PostCard ({posts}) {
 
     // Combine the two arrays with type
 const combinedPosts = [
@@ -53,4 +53,4 @@ return (
 )
 }
 
-export default Posts;
+export default PostCard;
