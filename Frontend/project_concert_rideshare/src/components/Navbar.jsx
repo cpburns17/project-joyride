@@ -9,7 +9,9 @@ function Navbar() {
 
   return (
     <>
-    <h1>Navbar</h1>
+    <NavLink to="/home" className="nav-link">Home</NavLink>
+    <NavLink to="/profile" className="nav-link">Profile</NavLink>
+    <NavLink to="/saved" className="nav-link">Saved</NavLink>
     </>
   )
   
