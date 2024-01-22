@@ -11,7 +11,7 @@ def create_transporter_post():
     for _ in range(5):
         t = Transporter_Post(
             vehicle= fake.sentence(nb_words=1),
-            seats = int(randint(1, 8)),
+            seats = randint(1, 8),
             event = fake.sentence(nb_words=2),
             location = fake.address(),
             details = fake.text(),
@@ -27,8 +27,8 @@ def create_user():
     for _ in range(5):
         u = User(
             name = fake.name(),
-            age = fake.int(randint(18, 99)),
-            social = fake.internet.avatar()
+            age = randint(18, 99),
+            social = fake.sentence(),
         )
         users.append(u)
 
@@ -52,9 +52,9 @@ def create_passenger_post():
 if __name__ == '__main__':
     with app.app_context():
         print('clearing DB...')
-        Transporter_Post.delete()
-        Passenger_Post.delete()
-        User.delete()
+        Transporter_Post.query.delete()
+        Passenger_Post.query.delete()
+        User.query.delete()
 
         print('Seeding Transporter Posts...')
         transporters = create_transporter_post()

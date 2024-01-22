@@ -41,7 +41,7 @@ class User(db.Model, SerializerMixin):
 #this is the type of event, front end will need to assign a variable or number to index through bc it will be a drop down selection
     name = db.Column(db.String, nullable = False)
 #validate age >= 18
-    age = db.Column(db.Integer, nullabe = False)
+    age = db.Column(db.Integer, nullable = False)
 #social media (can just be a url link)
     social = db.Column(db.String)
 
