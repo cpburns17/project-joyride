@@ -15,6 +15,7 @@ function App() {
                 <Navbar/>
             </header>
             <Outlet />
+            {/* <Outlet context ={{props}}/> */}
         </>
     )
 }

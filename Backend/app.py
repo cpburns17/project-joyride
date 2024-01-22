@@ -148,6 +148,13 @@ def get_users():
     users = User.query.all()
     return [u.to_dict() for u in users]
 
+@app.get('/users/<int:id>')
+def get_user_by_id(id):
+    user = db.session.get(User, id)
+    if not user:
+        {'error': 'User not found'}, 404
+    return user.to_dict()
+
 @app.post('/users')
 def create_user():
     try:
