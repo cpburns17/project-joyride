@@ -1,4 +1,11 @@
 import React from "react";
+import App from "./components/App.jsx";
+import Home from "./components/Home.jsx";
+import Profile from "./components/Profile.jsx";
+import Saved from "./components/Saved.jsx";
+
+
+
 
 const routes = [
     {
@@ -17,15 +24,10 @@ const routes = [
             errorElement: <h1>Something went wrong!</h1>
         },
         {
-          path: "/barbershop/:id/barbers",
-          element: <BarberDetails />,
-          errorElement: <h1>Something went wrong!</h1>
-        },
-        {
-          path: "/barbershop/:id/services",
-          element: <Services />,
-          errorElement: <h1>Something went wrong!</h1>
-        },
+            path: "/saved",
+            element: <Saved />,
+            errorElement: <h1>Something went wrong!</h1>
+        }
       ]
     }
   ]
