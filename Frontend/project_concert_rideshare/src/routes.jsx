@@ -1,4 +1,5 @@
 import React from "react";
+import App from './components/App.jsx'
 
 const routes = [
     {
@@ -6,26 +7,21 @@ const routes = [
       element: <App />,
       errorElement: <h1>Something went wrong!</h1>,
       children : [
-        {
-            path: "/home",
-            element: <Home/>,
-            errorElement: <h1>Something went wrong!</h1>
-        },
-        {
-            path: "/profile",
-            element: <Profile />,
-            errorElement: <h1>Something went wrong!</h1>
-        },
-        {
-          path: "/barbershop/:id/barbers",
-          element: <BarberDetails />,
-          errorElement: <h1>Something went wrong!</h1>
-        },
-        {
-          path: "/barbershop/:id/services",
-          element: <Services />,
-          errorElement: <h1>Something went wrong!</h1>
-        },
+        // {
+        //     path: "/home",
+        //     element: <Home/>,
+        //     errorElement: <h1>Something went wrong!</h1>
+        // },
+        // {
+        //     path: "/profile",
+        //     element: <Profile />,
+        //     errorElement: <h1>Something went wrong!</h1>
+        // },
+        // {
+        //   path: "/saved",
+        //   element: <Saved />,
+        //   errorElement: <h1>Something went wrong!</h1>
+        // },
       ]
     }
   ]

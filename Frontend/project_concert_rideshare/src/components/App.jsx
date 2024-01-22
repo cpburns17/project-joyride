@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-// import NavBar from "./components/NavBar";
+import Navbar from "./Navbar";
 
 // import { Outlet } from "react-router-dom";
 
@@ -10,13 +10,13 @@ function App() {
     return (
         <>
             <header>
-                <NavBar/>
+                <Navbar/>
             </header>
             <main>
-                <h1>Starting Application Page</h1>
+                <h1>Welcome Page</h1>
             </main>
         </>
     )
 }
 
-export default App
+export default App;
