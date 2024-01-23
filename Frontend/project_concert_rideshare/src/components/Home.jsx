@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PostCard from './PostCard';
+import CreatePost from './CreatePost'
 
 function Home() {
-const [posts, setPosts] = useState({
-    transporter_posts: [],
-    passenger_posts: [],
-  });
+// const [posts, setPosts] = useState({
+//     transporter_posts: [],
+//     passenger_posts: [],
+//   });
+
+const [transporterPosts, setTransporterPosts] = useState([])
+const [passengerPosts, setPassengerPosts] = useState([])
+
+function renderTransporterPost(newPost) {
+    setTransporterPosts([...transporterPosts, newPost])
+}
+
+function renderPassengerPost(newPost) {
+    setTransporterPosts([...passengerPosts, newPost])
+}
 
 
 useEffect(() => {
@@ -18,18 +30,19 @@ fetch("http://127.0.0.1:5555/all_posts")
     })
     .then((data) => {
     console.log(data);
-    setPosts(data);
+    setTransporterPosts(data.transporter_posts);
+    setPassengerPosts(data.passenger_posts)
     })
     .catch((error) => console.error("Fetch error:", error));
 }, []);
 
 // Combine the two arrays with type
 const combinedPosts = [
-...posts.transporter_posts.map((post) => ({
+...transporterPosts.map((post) => ({
     ...post,
     type: "transporter",
 })),
-...posts.passenger_posts.map((post) => ({ ...post, type: "passenger" })),
+...passengerPosts.map((post) => ({ ...post, type: "passenger" })),
 ];
 
 // Shuffle the combined array
@@ -40,6 +53,7 @@ const j = Math.floor(Math.random() * (i + 1));
 
 return (
 <div>
+    <CreatePost combinedPosts={combinedPosts} renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
     <PostCard combinedPosts={combinedPosts} />
 </div>
 );
