@@ -17,7 +17,7 @@ const routes = [
             errorElement: <h1>Something went wrong!</h1>
         },
         {
-            path: "/profile",
+            path: "/profile/:id",
             element: <Profile />,
             errorElement: <h1>Something went wrong!</h1>
         },
