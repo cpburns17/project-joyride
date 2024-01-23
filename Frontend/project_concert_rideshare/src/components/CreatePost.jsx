@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function CreatePost({combinedPosts, renderTransporterPost, renderPassengerPost}) {
+function CreatePost({renderTransporterPost, renderPassengerPost}) {
     const [vehicle, setVehicle] = useState('')
     const [seats, setSeats] = useState('')
     const [event, setEvent] = useState('')

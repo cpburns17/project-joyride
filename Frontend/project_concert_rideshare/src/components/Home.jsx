@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {useOutletContext} from 'react-router-dom'
 import PostCard from './PostCard';
 import CreatePost from './CreatePost'
 
 function Home() {
-// const [posts, setPosts] = useState({
-//     transporter_posts: [],
-//     passenger_posts: [],
-//   });
 
 const [transporterPosts, setTransporterPosts] = useState([])
 const [passengerPosts, setPassengerPosts] = useState([])
+const { filterValue } = useOutletContext();
 
 function renderTransporterPost(newPost) {
     setTransporterPosts([...transporterPosts, newPost])
@@ -45,44 +43,33 @@ const combinedPosts = [
 ...passengerPosts.map((post) => ({ ...post, type: "passenger" })),
 ];
 
-// Shuffle the combined array
-for (let i = combinedPosts.length - 1; i > 0; i--) {
-const j = Math.floor(Math.random() * (i + 1));
-[combinedPosts[i], combinedPosts[j]] = [combinedPosts[j], combinedPosts[i]];
+// Initialize filteredPosts with all posts
+let filteredPosts = combinedPosts;
+
+// Apply filters if filterValue is present
+if (filterValue) {
+  const lowerFilterValue = filterValue.toLowerCase();
+  filteredPosts = filteredPosts.filter((post) =>
+    (filterValue === "none" ||
+      (filterValue === "passenger" || filterValue === "transporter") &&
+      (post.type.toLowerCase() === lowerFilterValue || post.event.toLowerCase() === lowerFilterValue))
+  );
+}
+
+console.log(filteredPosts);
+
+// Shuffle the filtered array
+for (let i = filteredPosts.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [filteredPosts[i], filteredPosts[j]] = [filteredPosts[j], filteredPosts[i]];
 }
 
 return (
-<div>
-    <CreatePost combinedPosts={combinedPosts} renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
-    <PostCard combinedPosts={combinedPosts} />
-</div>
+  <div>
+    <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
+    <PostCard filteredPosts={filteredPosts} />
+  </div>
 );
 }
 
 export default Home;
-
-
-
-
-
-
-//     const [posts, setPosts] = useState([])
-//     const allPosts = []
-
-
-// fetch('http://localhost:5555/all_posts')
-// .then(res => res.json())
-// .then(data => {
-//     console.log(data)
-
-// })
-
-
-// return (
-//     <>
-//     <h1>Home page</h1>
-
-//     </>
-// )
-// }
-

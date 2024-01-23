@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import {Outlet} from 'react-router-dom'
 
 import Navbar from "./Navbar";
 
-// import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function App() {
-    const [search, setSearch] = useState("")
+
+    const [filterValue, setFilterValue] = useState("")
 
 
     return (
         <>
             <header>
-                <Navbar/>
+                <Navbar setFilterValue={setFilterValue}/>
             </header>
-            <Outlet />
-            {/* <Outlet context ={{props}}/> */}
+            <Outlet context={{filterValue, setFilterValue}}/>
+
         </>
     )
 }
 
-export default App;
+export default App

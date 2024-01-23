@@ -1,17 +1,21 @@
 import React from 'react';
 
-function PostCard({ combinedPosts }) {
+function PostCard({ filteredPosts }) {
 
+// function handleSave() {
 
+//     const savedPost = {
+
+//     }
+// }
 
 return (
 <div>
     <h1>Posts</h1>
-    {combinedPosts.map((post, index) => (
+    {filteredPosts.map((post, index) => (
     <div key={index}>
         {post.type === "transporter" ? (
         <>
-            
         <h2> Transporter</h2>
         <p>Vehicle: {post.vehicle}</p>
         <p>Seats: {post.seats}</p>
@@ -19,6 +23,7 @@ return (
         <p>Location: {post.location}</p>
         <p>Details: {post.details}</p>
         <p>Request: {post.request}</p>
+        {/* <button onClick={handleSave}> Save </button> */}
         </>
         ) : (
         <>
@@ -28,6 +33,7 @@ return (
         <p>Location: {post.location}</p>
         <p>Details: {post.details}</p>
         <p>Request: {post.request}</p>
+        {/* <button onClick={handleSave}> Save </button> */}
         </>
         )}
     </div>
