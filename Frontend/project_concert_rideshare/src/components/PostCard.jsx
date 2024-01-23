@@ -1,10 +1,10 @@
 import React from 'react';
 
-function PostCard({ combinedPosts }) {
+function PostCard({ filteredPosts }) {
   return (
     <div>
       <h1>Posts</h1>
-      {combinedPosts.map((post, index) => (
+      {filteredPosts.map((post, index) => (
         <div key={index}>
           {post.type === "transporter" ? (
             <>

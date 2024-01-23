@@ -225,7 +225,7 @@ function Home() {
   return (
     <div>
       <CreatePost renderTransporterPost={renderTransporterPost} />
-      <PostCard combinedPosts={filteredPosts} />
+      <PostCard filteredPosts={filteredPosts} />
     </div>
   );
 }
