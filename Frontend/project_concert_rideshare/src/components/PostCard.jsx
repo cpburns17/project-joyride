@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function PostCard({ filteredPosts }) {
+
+    const [comment, setComment] = useState('')
 
 // function handleSave() {
 
@@ -24,6 +26,7 @@ return (
         <p>Details: {post.details}</p>
         <p>Request: {post.request}</p>
         {/* <button onClick={handleSave}> Save </button> */}
+        <input type='text' name='comment' placeholder='Comment...' value={comment} onChange={(e) => setComment(e.target.value)}/>
         </>
         ) : (
         <>
@@ -34,6 +37,7 @@ return (
         <p>Details: {post.details}</p>
         <p>Request: {post.request}</p>
         {/* <button onClick={handleSave}> Save </button> */}
+        <input type='text' name='comment' placeholder='Comment...' value={comment} onChange={(e) => setComment(e.target.value)}/>
         </>
         )}
     </div>

@@ -14,7 +14,7 @@ function renderTransporterPost(newPost) {
 }
 
 function renderPassengerPost(newPost) {
-    setTransporterPosts([...passengerPosts, newPost])
+    setPassengerPosts([...passengerPosts, newPost])
 }
 
 
