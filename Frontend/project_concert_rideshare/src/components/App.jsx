@@ -5,14 +5,16 @@ import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 
 function App() {
+
+    const [filterValue, setFilterValue] = useState("")
     
 
     return (
         <>
             <header>
-                <Navbar/>
+                <Navbar setFilterValue={setFilterValue}/>
             </header>
-            <Outlet />
+            <Outlet context={{filterValue, setFilterValue}}/>
             
         </>
     )
