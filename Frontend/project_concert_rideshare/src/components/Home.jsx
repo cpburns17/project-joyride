@@ -164,6 +164,7 @@ function Home() {
 
 const [transporterPosts, setTransporterPosts] = useState([])
 const [passengerPosts, setPassengerPosts] = useState([])
+
 const { filterValue } = useOutletContext();
 
 function renderTransporterPost(newPost) {
