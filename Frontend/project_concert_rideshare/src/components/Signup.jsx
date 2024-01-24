@@ -43,7 +43,7 @@ function Signup({setIsLoggedIn, setUser}) {
 
 return (
     <div className="login-form">
-    <h2>Signup</h2>
+    <h2>Create Account</h2>
     <form onSubmit={handleSubmit}>
     <input
         placeholder="username"

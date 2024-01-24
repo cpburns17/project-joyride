@@ -167,11 +167,23 @@ def create_user():
         print(e)
         return { "errors": ["validation errors"] }, 400
 
-
 @app.get('/comments')
 def get_comments():
     all_comments = Comments.query.all()
-    return [c.to_dict(rules = ['-passenger', '-user', '-transporter']) for c in all_comments]
+    return [c.to_dict(rules=['-passenger', '-user', '-transporter']) for c in all_comments]
+
+
+@app.post('/comments')
+def create_comment():
+    try:
+        data = request.json
+        new_comment = Comments(text=data.get("text"), user_post_id=data.get("user_post_id"), transporter_post_id=data.get("transporter_post_id"), passenger_post_id=data.get("passenger_post_id"))
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict(), 201
+    except Exception as e:
+        print(e)
+        return { "errors": ["validation errors"] }, 400
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
