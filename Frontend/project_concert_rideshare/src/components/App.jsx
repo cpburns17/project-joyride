@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
-import Signup from "./Signup"; 
+import Signup from "./Signup"
 import Logout from "./Logout";
 import { Outlet } from "react-router-dom";
 

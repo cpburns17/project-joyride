@@ -47,7 +47,7 @@ function Signup({setIsLoggedIn, setUser}) {
       <form onSubmit={handleSubmit}>
         <input
           placeholder="username"
-          required="true"
+          required={true}
           type="text"
           value={username}
           onChange={handleUsername}
@@ -55,7 +55,7 @@ function Signup({setIsLoggedIn, setUser}) {
         <br />
         <input
           placeholder="password"
-          required="true"
+          required={true}
           type="password"
           value={password}
           onChange={handlePassword}
@@ -63,7 +63,7 @@ function Signup({setIsLoggedIn, setUser}) {
         <br />
         <input
             placeholder="first and last name"
-            required="true"
+            required={true}
             type="text"
             value={name}
             onChange={handleName}
@@ -71,7 +71,7 @@ function Signup({setIsLoggedIn, setUser}) {
         <br />
         <input
             placeholder="age"
-            required="true"
+            required={true}
             value={age}
             type="number"
             min="18"
@@ -80,7 +80,7 @@ function Signup({setIsLoggedIn, setUser}) {
         <br />
         <input
             placeholder="social media url"
-            required="true"
+            required={true}
             type="text"
             value={social}
             onChange={handleSocial}

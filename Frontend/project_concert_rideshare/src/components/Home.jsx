@@ -223,7 +223,7 @@ for (let i = filteredPosts.length - 1; i > 0; i--) {
 }
 
 
-const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} post={post}/>)
+const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} filteredPosts={filteredPosts} post={post}/>)
 
 
 
