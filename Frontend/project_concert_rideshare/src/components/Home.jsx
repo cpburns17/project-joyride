@@ -74,20 +74,20 @@ const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + po
 
 return (
   <div>
-    <Carousel
-        title={"RideShare"}
-        text={
-          "Need a ride? Have a ride? Post it here and find someone to share the ride with!"
-        }
+  <Carousel
+      title={"Post, Connect, & Ride."}
+      text={
+          "Connect with fellow music or sports lovers by experiencing an enjoyable commute"
+      }
       />
 
       <Jumbotron
-        title={"Go Ahead, Post It!"}
-        text={"Save money, time, effort, and much more!"}
+      title={"Welcome to, RideShare."}
+      text={"Need a ride? Have a ride? Post it here and find someone to share the ride with!"}
       />
-    <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
-    {renderAllPosts}
-  </div>
+  <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
+  {renderAllPosts}
+</div>
 );
 }
 

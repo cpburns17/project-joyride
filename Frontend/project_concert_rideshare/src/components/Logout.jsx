@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 function Logout({setUser, setIsLoggedIn}) {
 
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     setIsLoggedIn(false)
-    setUser({})
+    setUser(null)
+    navigate('/');
   };
 
   return (

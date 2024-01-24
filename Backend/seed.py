@@ -3,9 +3,9 @@ from random import randint, choice as rc
 from app import app
 from models import db, Transporter_Post, Passenger_Post, User
 from faker import Faker
-
+from flask_bcrypt import Bcrypt
 fake = Faker()
-
+bcrypt = Bcrypt(app)
 def create_transporter_post():
     transporters = []
     for _ in range(5):
@@ -23,14 +23,15 @@ def create_transporter_post():
 
 
 def create_user():
+    
     users = []
-    for _ in range(5):
+    for i in range(5):
         u = User(
             name = fake.name(),
             age = randint(18, 99),
             social = fake.sentence(),
-            username = fake.name(),
-            password = fake.text(),
+            username = str(i),
+            password = bcrypt.generate_password_hash(str(i)),
         )
         users.append(u)
 
@@ -53,6 +54,7 @@ def create_passenger_post():
 
 if __name__ == '__main__':
     with app.app_context():
+        
         print('clearing DB...')
         Transporter_Post.query.delete()
         Passenger_Post.query.delete()
