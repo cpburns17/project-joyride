@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {useOutletContext} from 'react-router-dom'
 import PostCard from './PostCard';
 import CreatePost from './CreatePost'
+import Carousel from "./Carousel";
+import Jumbotron from './Jumbotron';
 
 function Home() {
 
 const [transporterPosts, setTransporterPosts] = useState([])
 const [passengerPosts, setPassengerPosts] = useState([])
+
 const { filterValue } = useOutletContext();
 
 function renderTransporterPost(newPost) {
@@ -48,31 +51,44 @@ let filteredPosts = combinedPosts;
 
 // Apply filters if filterValue is present
 if (filterValue) {
-  const lowerFilterValue = filterValue.toLowerCase();
-  filteredPosts = filteredPosts.filter((post) =>
+    const lowerFilterValue = filterValue.toLowerCase();
+    filteredPosts = filteredPosts.filter((post) =>
     (filterValue === "none" ||
-      (filterValue === "passenger" || filterValue === "transporter") &&
-      (post.type.toLowerCase() === lowerFilterValue || post.event.toLowerCase() === lowerFilterValue))
-  );
+        (filterValue === "passenger" || filterValue === "transporter") &&
+        (post.type.toLowerCase() === lowerFilterValue || post.event.toLowerCase() === lowerFilterValue))
+    );
 }
 
 console.log(filteredPosts);
 
 // Shuffle the filtered array
 for (let i = filteredPosts.length - 1; i > 0; i--) {
-  const j = Math.floor(Math.random() * (i + 1));
-  [filteredPosts[i], filteredPosts[j]] = [filteredPosts[j], filteredPosts[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [filteredPosts[i], filteredPosts[j]] = [filteredPosts[j], filteredPosts[i]];
 }
 
-const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} post={post}/>)
+
+const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} filteredPosts={filteredPosts} post={post}/>)
+
 
 
 return (
-  <div>
-    <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
-    {renderAllPosts}
-  </div>
-);
+    <div>
+        <Carousel
+            title={"Welcome to RideShare"}
+            text={
+                "Connect with fellow music or sports lovers by experiencing an enjoyable commute"
+            }
+            />
+
+            <Jumbotron
+            title={"Post, Connect, & Ride."}
+            text={"Need a ride? Have a ride? Post it here and find someone to share the ride with!"}
+            />
+        <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
+        {renderAllPosts}
+    </div>
+    );
 }
 
 export default Home;
