@@ -24,8 +24,8 @@ def get_all_posts():
     transporter_posts = Transporter_Post.query.all()
     passenger_posts = Passenger_Post.query.all()
     return {
-        "transporter_posts": [t.to_dict(rules=['-comments']) for t in transporter_posts],
-        "passenger_posts": [p.to_dict(rules=['-comments']) for p in passenger_posts]
+        "transporter_posts": [t.to_dict() for t in transporter_posts],
+        "passenger_posts": [p.to_dict() for p in passenger_posts]
     }
 
 #USER
@@ -163,7 +163,7 @@ def delete_transporter_post(id):
 @app.get('/comments')
 def get_comments():
     all_comments = Comments.query.all()
-    return [c.to_dict(rules=['-passenger', '-user', '-transporter']) for c in all_comments]
+    return [c.to_dict() for c in all_comments]
 
 
 

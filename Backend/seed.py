@@ -29,6 +29,8 @@ def create_user():
             name = fake.name(),
             age = randint(18, 99),
             social = fake.sentence(),
+            username = fake.name(),
+            password = fake.text(),
         )
         users.append(u)
 

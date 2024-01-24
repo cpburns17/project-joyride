@@ -14,6 +14,7 @@ db = SQLAlchemy(metadata=metadata)
 
 class Transporter_Post(db.Model, SerializerMixin):
     __tablename__ = 'transporters_table'
+    serialize_rules = ['-comments.passenger', '-comments.transporter', '-user.passengers', '-user.transporters']
 
     id = db.Column(db.Integer, primary_key = True)
 #can give vehicle name 
@@ -28,11 +29,11 @@ class Transporter_Post(db.Model, SerializerMixin):
     details = db.Column(db.String)
 #this is for special requests (ie: compensation, requirements to drive/ride, etc.)
     request = db.Column(db.String)
-#this is for comments
-    comment = db.Column(db.String)
+#this is so each post has an assigned user id
+    user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'))
 
 
-    users = db.relationship('User', back_populates = 'transporter')
+    user = db.relationship('User', back_populates = 'transporters')
     comments = db.relationship('Comments', back_populates = 'transporter')
 
 
@@ -40,7 +41,7 @@ class Transporter_Post(db.Model, SerializerMixin):
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users_table'
-
+    serialize_rules = ['-passengers.user', '-transporters.user', '-comments.user']
     id = db.Column(db.Integer, primary_key = True)
 
     name = db.Column(db.String, nullable = False)
@@ -49,23 +50,23 @@ class User(db.Model, SerializerMixin):
 #social media (can just be a url link)
     social = db.Column(db.String)
 
-    # username = db.Column(db.String, nullable = False)
-    # password = db.Column(db.String, nullable = False)
+    username = db.Column(db.String, nullable = False)
+    password = db.Column(db.String, nullable = False)
     # where should we have the cascade delete?
 
-    transporter_id = db.Column(db.Integer, db.ForeignKey('transporters_table.id'))
-    passenger_id = db.Column(db.Integer, db.ForeignKey('passengers_table.id'))
+    # transporter_id = db.Column(db.Integer, db.ForeignKey('transporters_table.id'))
+    # passenger_id = db.Column(db.Integer, db.ForeignKey('passengers_table.id'))
 
-    passenger = db.relationship('Passenger_Post', back_populates = 'users')
-    transporter = db.relationship('Transporter_Post', back_populates = 'users')
+    passengers = db.relationship('Passenger_Post', back_populates = 'user')
+    transporters = db.relationship('Transporter_Post', back_populates = 'user')
     comments = db.relationship('Comments', back_populates = 'user')
 
 
-    # @validates('age')
-    # def validate_age(self, key, age):
-    #     if not age >= 18:
-    #         raise ValueError('Must be over 18')
-    #     return age
+    @validates('age')
+    def validate_age(self, key, age):
+        if not age >= 18:
+            raise ValueError('Must be over 18')
+        return age
 
 
 
@@ -73,7 +74,7 @@ class User(db.Model, SerializerMixin):
 
 class Passenger_Post(db.Model, SerializerMixin):
     __tablename__ = 'passengers_table'
-
+    serialize_rules = ['-comments.passenger', '-comments.transporter', '-user.passengers', '-user.transporters']
     id = db.Column(db.Integer, primary_key = True)
 #give 2 options to choose from such as $ or None
     offer = db.Column(db.String, nullable = False)
@@ -85,14 +86,16 @@ class Passenger_Post(db.Model, SerializerMixin):
     details = db.Column(db.String)
 #this is for special requests (ie: compensation, requirements to drive/ride, etc.)
     request = db.Column(db.String)
-#this is for comments
-    comment = db.Column(db.String)
+#this is so each post has an assigned user id
+    user_id = db.Column(db.Integer, db.ForeignKey('users_table.id'))
 
-    users = db.relationship('User', back_populates = 'passenger')
+
+    user = db.relationship('User', back_populates = 'passengers')
     comments = db.relationship('Comments', back_populates = 'passenger')
 
 class Comments(db.Model, SerializerMixin):
     __tablename__ = 'comments_table'
+    serialize_rules = ['-passenger.comments', '-transporter.comments', '-user.comments']
 
     id = db.Column(db.Integer, primary_key = True)
     text = db.Column(db.String, nullable = False)
@@ -105,4 +108,5 @@ class Comments(db.Model, SerializerMixin):
     passenger = db.relationship('Passenger_Post', back_populates = 'comments')
     transporter = db.relationship('Transporter_Post', back_populates = 'comments')
     user = db.relationship('User', back_populates = 'comments')
+
 
