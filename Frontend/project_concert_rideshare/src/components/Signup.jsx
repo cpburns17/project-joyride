@@ -85,6 +85,7 @@ return (
         value={social}
         onChange={handleSocial}
     />
+    <br />
     <button type="submit">Signup</button>
     </form>
 </div>
