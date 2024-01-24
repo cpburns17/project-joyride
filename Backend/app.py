@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 
-from models import db, User, Passenger_Post, Transporter_Post #import models
+from models import db, User, Passenger_Post, Transporter_Post, Comments
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins" : "*"}})
@@ -167,6 +167,11 @@ def create_user():
         print(e)
         return { "errors": ["validation errors"] }, 400
 
+
+@app.get('/comments')
+def get_comments():
+    all_comments = Comments.query.all()
+    return [c.to_dict(rules = ['-passenger', '-user', '-transporter']) for c in all_comments]
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

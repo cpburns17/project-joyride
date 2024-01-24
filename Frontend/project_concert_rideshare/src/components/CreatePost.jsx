@@ -109,9 +109,15 @@ return (
             <button> Transporter </button>
             <p>Transporter Post</p>
             <form onSubmit={handleSubmit}>
+                <label htmlFor="event">Select Event:</label>
+                    <select name="event" value={event} onChange={(e) => setEvent(e.target.value)}>
+                        <option value="Concert">Concert</option>
+                        <option value="Festival">Festival</option>
+                        <option value="Misc">Misc</option>
+                        <option value="Sporting">Sporting</option>
+                    </select>  
                 <input type='text' name='vehicle' placeholder='vehicle' value={vehicle} onChange={(e) => setVehicle(e.target.value)}/>
-                <input type='text' name='seats' placeholder='seats available' value={seats} onChange={(e) => setSeats(e.target.value)}/>
-                <input type='text' name='event' placeholder='event' value={event} onChange={(e) => setEvent(e.target.value)}/>
+                <input type='text' name='seats' placeholder='seats available' value={seats} onChange={(e) => setSeats(e.target.value)}/>              
                 <input type='text' name='location' placeholder='location' value={location} onChange={(e) => setLocation(e.target.value)}/>
                 <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <input type='text' name='request' placeholder='special request' value={request} onChange={(e) => setRequest(e.target.value)}/>
@@ -126,8 +132,14 @@ return (
             <button onClick={changePost}> Transporter </button> 
             <p>Passenger Post</p>
             <form onSubmit={handleSubmit2}>
-                <input type='text' name='offer' placeholder='offering' value={offer} onChange={(e) => setOffer(e.target.value)}/>
-                <input type='text' name='event' placeholder='event' value={event} onChange={(e) => setEvent(e.target.value)}/>
+                <label htmlFor="event">Select Event:</label>
+                    <select name="event" value={event} onChange={(e) => setEvent(e.target.value)}>
+                        <option value="Concert">Concert</option>
+                        <option value="Festival">Festival</option>
+                        <option value="Misc">Misc</option>
+                        <option value="Sporting">Sporting</option>
+                    </select>      
+                <input type='text' name='offer' placeholder='offering' value={offer} onChange={(e) => setOffer(e.target.value)}/>              
                 <input type='text' name='location' placeholder='location' value={location} onChange={(e) => setLocation(e.target.value)}/>
                 <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <input type='text' name='request' placeholder='special request' value={request} onChange={(e) => setRequest(e.target.value)}/>

@@ -64,10 +64,13 @@ for (let i = filteredPosts.length - 1; i > 0; i--) {
   [filteredPosts[i], filteredPosts[j]] = [filteredPosts[j], filteredPosts[i]];
 }
 
+const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} post={post}/>)
+
+
 return (
   <div>
     <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
-    <PostCard filteredPosts={filteredPosts} />
+    {renderAllPosts}
   </div>
 );
 }
