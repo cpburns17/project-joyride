@@ -21,6 +21,7 @@ return (
             <p>Location: {post.location}</p>
             <p>Details: {post.details}</p>
             <p>Request: {post.request}</p>
+            {/* <p>Comments: {post.comments[0].text}</p> */}
         </>
         ) : (
         <>
@@ -30,6 +31,7 @@ return (
             <p>Location: {post.location}</p>
             <p>Details: {post.details}</p>
             <p>Request: {post.request}</p>
+            {/* <p>Comments: {post.comments[0].text}</p> */}
         </>
         )}
         {/* Additional features (e.g., save button, comment input) can be added here */}

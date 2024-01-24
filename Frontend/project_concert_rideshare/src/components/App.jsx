@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
+import Signup from "./Signup"; 
+import Logout from "./Logout";
 import { Outlet } from "react-router-dom";
 
 function App() {
-    const [filterValue, setFilterValue] = useState("")
+    const [filterValue, setFilterValue] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(null)
 
+    console.log(isLoggedIn)
+    console.log(user)
 
-    return (
-        <>
-            <header>
-                <Navbar setFilterValue={setFilterValue}/>
-            </header>
-            <Outlet context={{filterValue, setFilterValue}}/>
+    
 
-        </>
-    )
+return (
+    <>
+        <header>
+        {isLoggedIn ? <Navbar setFilterValue={setFilterValue} /> : null}
+
+        {user === null ? <Signup setIsLoggedIn={setIsLoggedIn} setUser={setUser} /> : null}
+
+        {isLoggedIn && user ? <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} /> : null}
+        </header>
+        <Outlet context={{ filterValue, setFilterValue }} />
+    </>
+    );
 }
 
-export default App
+export default App;
