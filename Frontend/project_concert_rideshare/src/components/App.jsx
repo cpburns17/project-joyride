@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
 import Signup from "./Signup"
 import Logout from "./Logout";
+import Welcome from "./Welcome";
+import Carousel from "./Carousel";
+import Jumbotron from './Jumbotron';
+
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -24,6 +28,7 @@ function App() {
             {isLoggedIn && user ? <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} /> : null}
           </header>
           <Outlet context={{ filterValue, setFilterValue }} />
+          {!isLoggedIn ? <Welcome/> : null}
         </>
       );
     }

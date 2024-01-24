@@ -32,7 +32,6 @@ function PostCard({ post }) {
 
   return (
     <div>
-      <h1>Posts</h1>
       {post.type === 'transporter' ? (
         <>
           <h2> Transporter</h2>
