@@ -102,9 +102,9 @@ function CreatePost({renderTransporterPost, renderPassengerPost}) {
 
 return (
 <div className='new-post-form'>
-    <h1> Create Post </h1>
+    <h1 className='create-post-h1'> Create Post </h1>
     {switchPost ? ( 
-        <div className='create-post'>
+        <div className='create' >
             <button onClick={changePost}> Passenger </button> 
             <button> Transporter </button>
             <p>Transporter Post</p>
@@ -116,10 +116,10 @@ return (
                         <option value="Misc">Misc</option>
                         <option value="Sporting">Sporting</option>
                     </select>  
+                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <input type='text' name='vehicle' placeholder='vehicle' value={vehicle} onChange={(e) => setVehicle(e.target.value)}/>
                 <input type='text' name='seats' placeholder='seats available' value={seats} onChange={(e) => setSeats(e.target.value)}/>              
                 <input type='text' name='location' placeholder='location' value={location} onChange={(e) => setLocation(e.target.value)}/>
-                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <input type='text' name='request' placeholder='special request' value={request} onChange={(e) => setRequest(e.target.value)}/>
                 <button type='submit'>Submit</button>
             </form>
@@ -127,7 +127,7 @@ return (
 
     ) 
 : (
-        <div className='create-post'>
+        <div className='create'>
             <button> Passenger </button>
             <button onClick={changePost}> Transporter </button> 
             <p>Passenger Post</p>
@@ -138,10 +138,10 @@ return (
                         <option value="Festival">Festival</option>
                         <option value="Misc">Misc</option>
                         <option value="Sporting">Sporting</option>
-                    </select>      
+                    </select>
+                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <input type='text' name='offer' placeholder='offering' value={offer} onChange={(e) => setOffer(e.target.value)}/>              
                 <input type='text' name='location' placeholder='location' value={location} onChange={(e) => setLocation(e.target.value)}/>
-                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <input type='text' name='request' placeholder='special request' value={request} onChange={(e) => setRequest(e.target.value)}/>
                 <button type='submit'>Submit</button>
             </form>

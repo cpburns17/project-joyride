@@ -35,11 +35,11 @@ return (
         {post.type === 'transporter' ? (
         <>
             <h2> Transporter</h2>
+            <p>Details: {post.details}</p>
             <p>Vehicle: {post.vehicle}</p>
             <p>Seats: {post.seats}</p>
             <p>Event: {post.event}</p>
             <p>Location: {post.location}</p>
-            <p>Details: {post.details}</p>
             <p>Request: {post.request}</p>
             {comments.length > 0 && (
             <>
@@ -55,10 +55,10 @@ return (
         ) : (
         <>
             <h2>Passenger</h2>
+            <p>Details: {post.details}</p>
             <p>Offer: {post.offer}</p>
             <p>Event: {post.event}</p>
             <p>Location: {post.location}</p>
-            <p>Details: {post.details}</p>
             <p>Request: {post.request}</p>
             {comments.length > 0 && (
             <>

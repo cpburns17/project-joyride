@@ -34,7 +34,7 @@ return (
             <div class="carousel-item">
                 <img
                     class="d-block w-100"
-                    src="https://offloadmedia.feverup.com/secretnyc.co/wp-content/uploads/2023/06/25072701/revel2-1024x752.jpg"
+                    src="https://silverbirchesresortpa.com/wp-content/uploads/2018/04/GettyImages-699803744-e1522763547696-1492x609.jpg"
                     alt="Second slide"
                     style={{ height: "500px", objectFit: "cover" }}
                 ></img>
@@ -46,8 +46,20 @@ return (
             <div class="carousel-item">
                 <img
                     class="d-block w-100"
-                    src="https://www.bankrate.com/2022/09/08105058/rideshare-safety-statistics.jpg?auto=webp&optimize=high"
+                    src="https://www.okayplayer.com/media-library/the-best-nyc-summer-food-festivals-and-book-fairs.png?id=34156783&width=1245&height=700&quality=90&coordinates=0%2C146%2C0%2C0"
                     alt="Third slide"
+                    style={{ height: "500px", objectFit: "cover" }}
+                ></img>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{title}</h5>
+                    <p>{text}</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img
+                    class="d-block w-100"
+                    src="https://i.pinimg.com/originals/f4/af/52/f4af520b9e228fae33185cbad2654983.jpg"
+                    alt="Fourth slide"
                     style={{ height: "500px", objectFit: "cover" }}
                 ></img>
                 <div class="carousel-caption d-none d-md-block">

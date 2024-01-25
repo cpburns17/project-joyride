@@ -1,9 +1,11 @@
 import App from './App'
 import Navbar from './Navbar'
 import React, {useState, useEffect} from 'react'
+import { useOutletContext} from 'react-router-dom'
 
 function Profile () {
     const [userInfo, setUserInfo] = useState([])
+
 
 useEffect(() => {
     fetch(`http://localhost:5555/users`)

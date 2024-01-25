@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Logout from './Logout'
 
-/* define the NavBar component */
-function Navbar({ setFilterValue }) {
+function Navbar({ setFilterValue, user, setUser, isLoggedIn, setIsLoggedIn }) {
+
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -92,6 +93,7 @@ function Navbar({ setFilterValue }) {
             </a>
           </div>
         </div>
+        {isLoggedIn && user ? <Logout setUser={setUser} setIsLoggedIn={setIsLoggedIn} /> : null}
       </nav>
     </div>
   );

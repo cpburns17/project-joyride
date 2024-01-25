@@ -1,8 +1,11 @@
-from flask import Flask, request
+from flask import Flask, make_response, jsonify, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import datetime
 from flask_cors import CORS
-
+from dotenv import dotenv_values
+from flask_bcrypt import Bcrypt
+config = dotenv_values(".env")
 from models import db, User, Passenger_Post, Transporter_Post, Comments
 
 app = Flask(__name__)
@@ -19,6 +22,7 @@ db.init_app(app)
 def index():
     return "Home"
 
+# GET ALL POSTS
 
 @app.get('/all_posts')
 def get_all_posts():
@@ -29,35 +33,9 @@ def get_all_posts():
         "passenger_posts": [p.to_dict() for p in passenger_posts]
     }
 
-#USER
 
-@app.patch('/users/<int:id>')
-def patch_user(id):
-    current_user = db.session.get(User, id)
-    if not current_user:
-        return {"error": "User not found"}, 404
-    try:
-        data = request.json
-        for key in data:
-            setattr(current_user, key, data[key])
-            db.session.add(current_user)
-            db.session.commit()
-            return current_user.to_dict(), 202
-    except Exception as e:
-        print(e)
-        return {"errors": ["validation errors"]}, 400
+# PASSENGER POST
 
-@app.delete('/users/<int:id>')
-def delete_user(id):
-    current_user = db.session.get(User, id) 
-    if not current_user:
-        return {"error": "User not found"}, 404
-    db.session.delete(current_user)
-    db.session.commit()
-    return {}, 204
-
-
-#PASSENGER POST
 @app.get('/passenger_posts')
 def get_passenger_posts():
     passenger_posts = Passenger_Post.query.all()
@@ -101,6 +79,8 @@ def delete_passenger_post(id):
     db.session.commit()
     return {}, 204
 
+# TRANSPORTER POST
+
 @app.get('/transporter_posts')
 def get_transporter_posts():
     transporter_posts = Transporter_Post.query.all()
@@ -143,6 +123,8 @@ def delete_transporter_post(id):
     db.session.commit()
     return {}, 204
 
+# USERS 
+
 @app.get('/users')
 def get_users():
     users = User.query.all()
@@ -156,16 +138,44 @@ def get_user_by_id(id):
     return user.to_dict()
 
 @app.post('/users')
-def create_user():
+def signup():
     try:
         data = request.json
-        new_user = User(name=data.get("name"), age=data.get("age"), social=data.get("social"), transporter_id=data.get("transporter_id"), passenger_id=data.get("passenger_id"))
+        new_user = User(name=data.get("name"), age=data.get("age"), social=data.get("social"), transporter_id=data.get("transporter_id"), passenger_id=data.get("passenger_id"), username=data.get('username'), password=data.get('password'))
         db.session.add(new_user)
         db.session.commit()
         return new_user.to_dict(), 201
     except Exception as e:
         print(e)
         return { "errors": ["validation errors"] }, 400
+    
+@app.patch('/users/<int:id>')
+def patch_user(id):
+    current_user = db.session.get(User, id)
+    if not current_user:
+        return {"error": "User not found"}, 404
+    try:
+        data = request.json
+        for key in data:
+            setattr(current_user, key, data[key])
+            db.session.add(current_user)
+            db.session.commit()
+            return current_user.to_dict(), 202
+    except Exception as e:
+        print(e)
+        return {"errors": ["validation errors"]}, 400
+
+@app.delete('/users/<int:id>')
+def delete_user(id):
+    current_user = db.session.get(User, id) 
+    if not current_user:
+        return {"error": "User not found"}, 404
+    db.session.delete(current_user)
+    db.session.commit()
+    return {}, 204
+
+
+# COMMENTS 
 
 @app.get('/comments')
 def get_comments():
@@ -184,6 +194,37 @@ def create_comment():
     except Exception as e:
         print(e)
         return { "errors": ["validation errors"] }, 400
+
+
+# This is newly added for session
+    
+@app.get('/check_session')
+def check_session():
+    user = db.session.get(User, session.get('user_id'))
+    print(f'check session {session.get("user_id")}')
+    if user:
+        return user.to_dict(rules=['-password_hash']), 200
+    else:
+        return {"message": "No user logged in"}, 401
+
+@app.delete('/logout')
+def logout():
+    session.pop('user_id')
+    return { "message": "Logged out"}, 200
+
+
+@app.post('/login')
+def login():
+    data = request.json
+
+    user = User.query.filter(User.name == data.get('name')).first()
+
+    if user and bcrypt.check_password_hash(user.password_hash, data.get('password')):
+        session["user_id"] = user.id
+        print("success")
+        return user.to_dict(), 200
+    else:
+        return { "error": "Invalid username or password" }, 401
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
