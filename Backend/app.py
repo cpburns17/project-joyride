@@ -266,10 +266,8 @@ def signup():
         password_hash = bcrypt.generate_password_hash(data.get("password"))
         new_user = User(
             name=data.get("name"),
-            age=data.get("age"),
+            age=int(data.get("age")),
             social=data.get("social"),
-            transporter_id=data.get("transporter_id"),
-            passenger_id=data.get("passenger_id"),
             username=data.get("username"),
             password=password_hash,
         )
@@ -277,7 +275,7 @@ def signup():
         db.session.commit()
         return new_user.to_dict(), 201
     except Exception as e:
-        print(e)
+        print("error in signup: " + str(e))
         return {"errors": ["validation errors"]}, 400
 
 
@@ -325,6 +323,7 @@ def create_passenger_post():
             location=data.get("location"),
             details=data.get("details"),
             request=data.get("request"),
+            user_id=data.get("user_id")
         )
         db.session.add(new_passenger_post)
         db.session.commit()
@@ -378,6 +377,7 @@ def create_transporter_post():
             location=data.get("location"),
             details=data.get("details"),
             request=data.get("request"),
+            user_id=data.get("user_id")
         )
         db.session.add(new_transporter_post)
         db.session.commit()

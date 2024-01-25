@@ -31,11 +31,16 @@ function Logout({user, setUser, setIsLoggedIn}) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-
-    
-    setIsLoggedIn(false)
-    setUser(null)
-    navigate('/');
+    fetch('/api/logout', {
+      method: 'DELETE'
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log('Session ended: ', data)
+        setIsLoggedIn(false)
+        setUser(null)
+        navigate('/')
+      })
   };
 
   return (
@@ -46,3 +51,4 @@ function Logout({user, setUser, setIsLoggedIn}) {
 }
 
 export default Logout;
+

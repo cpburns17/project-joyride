@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 
-function CreatePost({renderTransporterPost, renderPassengerPost}) {
+function CreatePost({renderTransporterPost, renderPassengerPost, user}) {
+    console.log(user)
     const [vehicle, setVehicle] = useState('')
     const [seats, setSeats] = useState('')
     const [event, setEvent] = useState('')
+    console.log(event)
     const [location, setLocation] = useState('')
     const [details, setDetails] = useState('')
     const [request, setRequest] = useState('')
@@ -21,11 +23,12 @@ function CreatePost({renderTransporterPost, renderPassengerPost}) {
             location: location,
             details: details,
             request: request,
+            user_id: user.id
         };
         renderTransporterPost(newTransporterForm)
 
         // Send a post request to the backend route '/transporter_posts'
-        fetch('http://127.0.0.1:5555/transporter_posts', {
+        fetch('api/transporter_posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,12 +66,13 @@ function CreatePost({renderTransporterPost, renderPassengerPost}) {
             location: location,
             details: details,
             request: request,
+            user_id: user.id
         };
         renderPassengerPost(newPassengerForm)
 
 
         // Send a post request to the backend route '/transporter_posts'
-        fetch('http://127.0.0.1:5555/passenger_posts', {
+        fetch('api/passenger_posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

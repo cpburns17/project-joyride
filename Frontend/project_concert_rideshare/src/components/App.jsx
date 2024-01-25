@@ -112,7 +112,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
-import Signup from "./Signup"
+import Signup from './SIgnUp';
 import Logout from "./Logout";
 import Welcome from "./Welcome";
 import Carousel from "./Carousel";
@@ -172,7 +172,7 @@ function App() {
 
             
           </header>
-          <Outlet context={{ filterValue, setFilterValue }} />
+          <Outlet context={{ filterValue, setFilterValue, user }} />
           {!isLoggedIn ? <Welcome/> : null}
         </>
       );

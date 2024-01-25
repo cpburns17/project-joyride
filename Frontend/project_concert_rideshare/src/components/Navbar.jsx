@@ -180,7 +180,7 @@ function Navbar({ setFilterValue, user, setUser, isLoggedIn, setIsLoggedIn }) {
             </a>
           </div>
         </div>
-        {isLoggedIn && user ? <Logout user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} /> : null}
+        { user ? <Logout user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} /> : null}
       </nav>
     </div>
   );

@@ -10,7 +10,7 @@ function Home() {
 const [transporterPosts, setTransporterPosts] = useState([])
 const [passengerPosts, setPassengerPosts] = useState([])
 
-const { filterValue } = useOutletContext();
+const { filterValue, user } = useOutletContext();
 
 function renderTransporterPost(newPost) {
     setTransporterPosts([...transporterPosts, newPost])
@@ -85,7 +85,7 @@ return (
       title={"Welcome to, RideShare."}
       text={"Need a ride? Have a ride? Post it here and find someone to share the ride with!"}
       />
-  <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} />
+  <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} user={user}/>
   {renderAllPosts}
 </div>
 );

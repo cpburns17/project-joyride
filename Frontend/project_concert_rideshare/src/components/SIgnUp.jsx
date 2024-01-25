@@ -138,11 +138,11 @@ function Signup({ setIsLoggedIn, setUser }) {
     setIsLoggedIn(true);
 
     const newUser = {
-      "username": username,
-      "password": password,
       "name": name,
       "age": age,
-      "social": social
+      "social": social,
+      "username": username,
+      "password": password
     };
 
     fetch('api/users', {
@@ -155,9 +155,9 @@ function Signup({ setIsLoggedIn, setUser }) {
       .then((r) => r.json())
       .then((data) => {
         console.log('User created:', data);
-        setUser(data);
+        // setUser(data);
         // Redirect to /home
-        navigate('/home');
+        // navigate('/home');
       })
       .catch((error) => {
         console.error('Error creating user:', error);
