@@ -88,7 +88,9 @@ return (
       text={"Need a ride? Have a ride? Post it here and find someone to share the ride with!"}
       />
   <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} user={user}/>
+  <div className='render-posts'>
   {renderAllPosts}
+  </div>
 </div>
 );
 }
