@@ -22,7 +22,7 @@ function renderPassengerPost(newPost) {
 
 
 useEffect(() => {
-fetch("http://127.0.0.1:5555/all_posts")
+fetch("api/all_posts")
     .then((response) => {
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -74,12 +74,12 @@ const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + po
 
 return (
   <div>
-  <Carousel
+  {/* <Carousel
       title={"Post, Connect, & Ride."}
       text={
           "Connect with fellow music or sports lovers by experiencing an enjoyable commute"
       }
-      />
+      /> */}
 
       <Jumbotron
       title={"Welcome to, RideShare."}

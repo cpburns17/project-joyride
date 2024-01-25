@@ -145,7 +145,7 @@ function Signup({ setIsLoggedIn, setUser }) {
       "social": social
     };
 
-    fetch('/users', {
+    fetch('api/users', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

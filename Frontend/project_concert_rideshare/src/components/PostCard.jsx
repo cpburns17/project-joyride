@@ -7,7 +7,7 @@ function PostCard({ post }) {
   const handleCommentSubmit = () => {
     console.log('Comment submitted:', comment);
 
-    fetch("http://localhost:5555/comments", {
+    fetch("api/comments", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -212,7 +212,7 @@ def index():
     return "Home"
 
 
-@app.get("/check_session")
+@app.get("/api/check_session")
 def check_session():
     user = db.session.get(User, session.get("user_id"))
     print(f'check session {session.get("user_id")}')
@@ -222,26 +222,12 @@ def check_session():
         return {"message": "No user logged in"}, 401
 
 
-@app.delete("/logout")
+@app.delete("/api/logout")
 def logout():
     session.pop("user_id")
     return {"message": "Logged out"}, 200
 
-
-# @app.post('/login')
-# def login():
-#     data = request.json
-
-#     user = User.query.filter(User.name == data.get('name')).first()
-
-
-#     if user and bcrypt.check_password_hash(user.password_hash, data.get('password')):
-#         session["user_id"] = user.id
-#         print("success")
-#         return user.to_dict(), 200
-#     else:
-#         return { "error": "Invalid username or password" }, 401
-@app.post("/login")
+@app.post("/api/login")
 def login():
     data = request.json
 
@@ -256,7 +242,7 @@ def login():
         return {"error": "Invalid username or password"}, 401
 
 
-@app.get("/all_posts")
+@app.get("/api/all_posts")
 def get_all_posts():
     transporter_posts = Transporter_Post.query.all()
     passenger_posts = Passenger_Post.query.all()
@@ -267,13 +253,13 @@ def get_all_posts():
 
 
 # USER
-@app.get("/users")
+@app.get("/api/users")
 def get_users():
     users = User.query.all()
     return [u.to_dict() for u in users]
 
 
-@app.post("/users")
+@app.post("/api/users")
 def signup():
     try:
         data = request.json
@@ -295,7 +281,7 @@ def signup():
         return {"errors": ["validation errors"]}, 400
 
 
-@app.patch("/users/<int:id>")
+@app.patch("/api/users/<int:id>")
 def patch_user(id):
     current_user = db.session.get(User, id)
     if not current_user:
@@ -312,7 +298,7 @@ def patch_user(id):
         return {"errors": ["validation errors"]}, 400
 
 
-@app.delete("/users/<int:id>")
+@app.delete("/api/users/<int:id>")
 def delete_user(id):
     current_user = db.session.get(User, id)
     if not current_user:
@@ -323,13 +309,13 @@ def delete_user(id):
 
 
 # PASSENGER POST
-@app.get("/passenger_posts")
+@app.get("/api/passenger_posts")
 def get_passenger_posts():
     passenger_posts = Passenger_Post.query.all()
     return [p.to_dict() for p in passenger_posts]
 
 
-@app.post("/passenger_posts")
+@app.post("/api/passenger_posts")
 def create_passenger_post():
     try:
         data = request.json
@@ -348,7 +334,7 @@ def create_passenger_post():
         return {"errors": ["validation errors"]}, 400
 
 
-@app.patch("/passenger_posts/<int:id>")
+@app.patch("/api/passenger_posts/<int:id>")
 def patch_passenger_post(id):
     current_passenger_post = db.session.get(Passenger_Post, id)
     if not current_passenger_post:
@@ -365,7 +351,7 @@ def patch_passenger_post(id):
         return {"errors": ["validation errors"]}, 400
 
 
-@app.delete("/passenger_posts/<int:id>")
+@app.delete("/api/passenger_posts/<int:id>")
 def delete_passenger_post(id):
     current_passenger_post = db.session.get(Passenger_Post, id)
     if not current_passenger_post:
@@ -375,13 +361,13 @@ def delete_passenger_post(id):
     return {}, 204
 
 
-@app.get("/transporter_posts")
+@app.get("/api/transporter_posts")
 def get_transporter_posts():
     transporter_posts = Transporter_Post.query.all()
     return [t.to_dict() for t in transporter_posts]
 
 
-@app.post("/transporter_posts")
+@app.post("/api/transporter_posts")
 def create_transporter_post():
     try:
         data = request.json
@@ -401,7 +387,7 @@ def create_transporter_post():
         return {"errors": ["validation errors"]}, 400
 
 
-@app.patch("/transporter_posts/<int:id>")
+@app.patch("/api/transporter_posts/<int:id>")
 def patch_transporter_post(id):
     current_transporter_post = db.session.get(Transporter_Post, id)
     if not current_transporter_post:
@@ -418,7 +404,7 @@ def patch_transporter_post(id):
         return {"errors": ["validation errors"]}, 400
 
 
-@app.delete("/transporter_posts/<int:id>")
+@app.delete("/api/transporter_posts/<int:id>")
 def delete_transporter_post(id):
     current_transporter_post = db.session.get(Transporter_Post, id)
     if not current_transporter_post:
@@ -431,13 +417,13 @@ def delete_transporter_post(id):
 #
 
 
-@app.get("/comments")
+@app.get("/api/comments")
 def get_comments():
     all_comments = Comments.query.all()
     return [c.to_dict() for c in all_comments]
 
 
-@app.post("/comments")
+@app.post("/api/comments")
 def create_comment():
     try:
         data = request.json

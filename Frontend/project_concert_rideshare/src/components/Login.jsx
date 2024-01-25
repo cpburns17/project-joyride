@@ -13,6 +13,7 @@ function Login({ attemptLogin }) {
     function handleLogIn(e) {
         e.preventDefault();
         attemptLogin({ "username": username, "password": password });
+        navigate('/home');
     }
 
     return (
