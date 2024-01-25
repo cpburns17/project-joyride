@@ -125,6 +125,7 @@ function App() {
     const [filterValue, setFilterValue] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null)
+    
 
     console.log(isLoggedIn)
     console.log(user)
@@ -141,6 +142,7 @@ function App() {
   /**********************
         Authentication
     ************************/
+
 
     function attemptLogin(userInfo) {
       fetch(`api/login`, {
@@ -173,7 +175,7 @@ function App() {
             
           </header>
           <Outlet context={{ filterValue, setFilterValue, user }} />
-          {!isLoggedIn ? <Welcome/> : null}
+          {user === null ? <Welcome/> : null}
         </>
       );
     }

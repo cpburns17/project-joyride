@@ -49,6 +49,7 @@ const combinedPosts = [
 // Initialize filteredPosts with all posts
 let filteredPosts = combinedPosts;
 
+
 // Apply filters if filterValue is present
 if (filterValue) {
   const lowerFilterValue = filterValue.toLowerCase();
@@ -74,12 +75,12 @@ const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + po
 
 return (
   <div>
-  {/* <Carousel
+  <Carousel
       title={"Post, Connect, & Ride."}
       text={
           "Connect with fellow music or sports lovers by experiencing an enjoyable commute"
       }
-      /> */}
+      />
 
       <Jumbotron
       title={"Welcome to, RideShare."}
