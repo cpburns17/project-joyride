@@ -22,11 +22,6 @@ const routes = [
             path: "/profile",
             element: <Profile />,
             errorElement: <h1>Something went wrong!</h1>
-        },
-        {
-            path: "/saved",
-            element: <Saved />,
-            errorElement: <h1>Something went wrong!</h1>
         }
       ]
     }
