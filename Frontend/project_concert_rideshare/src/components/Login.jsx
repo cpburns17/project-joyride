@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+// import { useNavigate } from 'react-router-dom'; 
 
 function Login({ attemptLogin }) {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,7 +13,7 @@ function Login({ attemptLogin }) {
     function handleLogIn(e) {
         e.preventDefault();
         attemptLogin({ "username": username, "password": password });
-        navigate('/home');
+        // navigate('/home');
     }
 
     return (

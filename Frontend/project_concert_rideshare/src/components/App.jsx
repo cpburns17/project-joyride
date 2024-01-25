@@ -118,6 +118,7 @@ import Welcome from "./Welcome";
 import Carousel from "./Carousel";
 import Jumbotron from './Jumbotron';
 import Login from './Login'
+import { useNavigate } from 'react-router-dom'; 
 
 import { Outlet } from "react-router-dom";
 
@@ -125,6 +126,8 @@ function App() {
     const [filterValue, setFilterValue] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null)
+    const navigate = useNavigate();
+    
     
 
     console.log(isLoggedIn)
@@ -159,7 +162,11 @@ function App() {
                   }
                   throw res;
               })
-              .then((data) => setUser(data))
+              .then((data) => {
+                setUser(data)
+                navigate('/home');
+
+              })
               .catch((e) => console.log(e));
       }
     
