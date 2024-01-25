@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 
-function Logout({setUser, setIsLoggedIn}) {
+function Logout({user, setUser, setIsLoggedIn}) {
 
     const navigate = useNavigate();
 
     const handleLogout = () => {
-    setIsLoggedIn(false)
-    setUser(null)
-    navigate('/');
+    fetch('/api/logout', {
+        method: 'DELETE'
+    })
+        .then((r) => r.json())
+        .then((data) => {
+        console.log('Session ended: ', data)
+        setIsLoggedIn(false)
+        setUser(null)
+        navigate('/')
+        })
     };
 
-return (
+    return (
     <button onClick={handleLogout}>
         Logout
     </button>
-);
+    );
 }
 
 export default Logout;

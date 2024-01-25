@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 function Signup({ setIsLoggedIn, setUser }) {
     const [username, setUsername] = useState("");
@@ -32,21 +33,35 @@ function Signup({ setIsLoggedIn, setUser }) {
     const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoggedIn(true);
+
     const newUser = {
-        "username": username,
-        "password": password,
         "name": name,
         "age": age,
-        "social": social
-    }
-    console.log(newUser);
-    setUser(newUser);
-
-    // Redirect to /home
-    navigate('/home');
+        "social": social,
+        "username": username,
+        "password": password
     };
 
-return (
+    fetch('api/users', {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newUser)
+    })
+        .then((r) => r.json())
+        .then((data) => {
+        console.log('User created:', data);
+        // setUser(data);
+        // Redirect to /home
+        // navigate('/home');
+        })
+        .catch((error) => {
+        console.error('Error creating user:', error);
+        });
+    };
+
+    return (
     <div className="login-form">
         <h2>Signup</h2>
         <form onSubmit={handleSubmit}>
@@ -90,11 +105,11 @@ return (
             value={social}
             onChange={handleSocial}
         />
-        <br/>
+        <br />
         <button type="submit">Signup</button>
         </form>
     </div>
     );
-};
+}
 
 export default Signup;

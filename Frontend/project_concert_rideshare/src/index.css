@@ -81,6 +81,19 @@ body {
 
 }
 
+/* .new-post-form {
+  justify-content: center;
+  align-items: center;
+} */
+
+.create-post-h1 {
+  padding-left: 5%;
+  justify-content: center;
+}
+.create {
+  padding: 1%;
+}
+
 .welcome-statement {
   display: flex;
   justify-content: center;
@@ -112,4 +125,40 @@ body {
 }
 .render-posts {
   justify-content: center;
+}
+
+.post-cards {
+  align-items: left;
+  padding: 2%;
+  margin: 2%;
+  flex-direction:column;
+  align-items: center;
+  border: #dddcdc solid;
+  box-shadow: 0 2px 6px 0 rgba(112, 125, 134, 0.9);
+  border-width: thin;
+  border-radius: 20px;
+  background-color: rgb(174, 221, 238);
+  color: rgb(44, 41, 41)
+}
+
+.submit-card {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.4em .8em;
+  margin-left: 5px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+
+
+/* Profile  */
+
+.profile-welcome {
+  margin-top: 20%;
+  margin-bottom: 10%;
 }

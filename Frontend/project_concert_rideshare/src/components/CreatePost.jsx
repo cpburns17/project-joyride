@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function CreatePost({renderTransporterPost, renderPassengerPost}) {
+function CreatePost({renderTransporterPost, renderPassengerPost, user}) {
     const [vehicle, setVehicle] = useState('')
     const [seats, setSeats] = useState('')
     const [event, setEvent] = useState('')
@@ -21,11 +21,12 @@ function CreatePost({renderTransporterPost, renderPassengerPost}) {
             location: location,
             details: details,
             request: request,
+            user_id: user.id,
         };
         renderTransporterPost(newTransporterForm)
 
         // Send a post request to the backend route '/transporter_posts'
-        fetch('http://127.0.0.1:5555/transporter_posts', {
+        fetch('api/transporter_posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,12 +64,13 @@ function CreatePost({renderTransporterPost, renderPassengerPost}) {
             location: location,
             details: details,
             request: request,
+            user_id: user.id,
         };
         renderPassengerPost(newPassengerForm)
 
 
         // Send a post request to the backend route '/transporter_posts'
-        fetch('http://127.0.0.1:5555/passenger_posts', {
+        fetch('api/passenger_posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -116,11 +118,11 @@ return (
                         <option value="Misc">Misc</option>
                         <option value="Sporting">Sporting</option>
                     </select>  
-                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
+                <input type='text' name='request' placeholder='Post Caption' value={request} onChange={(e) => setRequest(e.target.value)}/>
                 <input type='text' name='vehicle' placeholder='vehicle' value={vehicle} onChange={(e) => setVehicle(e.target.value)}/>
                 <input type='text' name='seats' placeholder='seats available' value={seats} onChange={(e) => setSeats(e.target.value)}/>              
                 <input type='text' name='location' placeholder='location' value={location} onChange={(e) => setLocation(e.target.value)}/>
-                <input type='text' name='request' placeholder='special request' value={request} onChange={(e) => setRequest(e.target.value)}/>
+                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <button type='submit'>Submit</button>
             </form>
         </div>
@@ -139,10 +141,10 @@ return (
                         <option value="Misc">Misc</option>
                         <option value="Sporting">Sporting</option>
                     </select>
-                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
+                <input type='text' name='request' placeholder='Post Caption' value={request} onChange={(e) => setRequest(e.target.value)}/>
                 <input type='text' name='offer' placeholder='offering' value={offer} onChange={(e) => setOffer(e.target.value)}/>              
                 <input type='text' name='location' placeholder='location' value={location} onChange={(e) => setLocation(e.target.value)}/>
-                <input type='text' name='request' placeholder='special request' value={request} onChange={(e) => setRequest(e.target.value)}/>
+                <input type='text' name='details' placeholder='details' value={details} onChange={(e) => setDetails(e.target.value)}/>
                 <button type='submit'>Submit</button>
             </form>
         </div>
