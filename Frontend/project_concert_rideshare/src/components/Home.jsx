@@ -60,32 +60,27 @@
 //   );
 // }
 
+//  // Sort posts in chronological order based on id
+// filteredPosts.sort((a, b) => a.id - b.id);
+
 // console.log(filteredPosts);
-
-// // Shuffle the filtered array
-// for (let i = filteredPosts.length - 1; i > 0; i--) {
-//   const j = Math.floor(Math.random() * (i + 1));
-//   [filteredPosts[i], filteredPosts[j]] = [filteredPosts[j], filteredPosts[i]];
-// }
-
 
 // const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} filteredPosts={filteredPosts} post={post}/>)
 
-// const userPosts = filteredPosts.filter((post) => post.user_id == user.id)
-// console.log(userPosts)
+
 
 
 // return (
-//   <div>
+//   <div className='home'>
 //   <Carousel
-//       title={"Post, Connect, & Ride."}
+//       title={"Welcome to Joyride"}
 //       text={
 //           "Connect with fellow music or sports lovers by experiencing an enjoyable commute"
 //       }
 //       />
 
 //       <Jumbotron
-//       title={"Welcome to, RideShare."}
+//       title={"Post, Connect, & Ride."}
 //       text={"Need a ride? Have a ride? Post it here and find someone to share the ride with!"}
 //       />
 //   <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} user={user}/>
@@ -95,6 +90,7 @@
 // }
 
 // export default Home;
+
 
 
 import React, { useState, useEffect } from 'react';
@@ -159,14 +155,10 @@ if (filterValue) {
   );
 }
 
+ // Sort posts in chronological order based on id
+filteredPosts.sort((a, b) => a.id - b.id);
+
 console.log(filteredPosts);
-
-// Shuffle the filtered array
-for (let i = filteredPosts.length - 1; i > 0; i--) {
-  const j = Math.floor(Math.random() * (i + 1));
-  [filteredPosts[i], filteredPosts[j]] = [filteredPosts[j], filteredPosts[i]];
-}
-
 
 const renderAllPosts = filteredPosts.map((post) => <PostCard key={post.type + post.id} filteredPosts={filteredPosts} post={post}/>)
 
@@ -187,7 +179,9 @@ return (
       text={"Need a ride? Have a ride? Post it here and find someone to share the ride with!"}
       />
   <CreatePost renderTransporterPost={renderTransporterPost} renderPassengerPost={renderPassengerPost} user={user}/>
+  <div className='render-posts'>
   {renderAllPosts}
+  </div>
 </div>
 );
 }

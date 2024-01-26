@@ -31,59 +31,59 @@ function PostCard({ post }) {
   };
 
   return (
-    <div>
-      {post.type === 'transporter' ? (
+    <div className='post-cards'>
+        {post.type === 'transporter' ? (
         <>
-          <h2> Transporter</h2>
-          <p>Vehicle: {post.vehicle}</p>
-          <p>Seats: {post.seats}</p>
-          <p>Event: {post.event}</p>
-          <p>Location: {post.location}</p>
-          <p>Details: {post.details}</p>
-          <p>Request: {post.request}</p>
-          {comments.length > 0 && (
+            <h2>{post.request}</h2>
+            <p> Driver </p>
+            <p>Vehicle: {post.vehicle}</p>
+            <p>Seats: {post.seats}</p>
+            <p>Event: {post.event}</p>
+            <p>Location: {post.location}</p>
+            <p>Details: {post.details}</p>
+            {comments.length > 0 && (
             <>
-              <p>Comments:</p>
-              <ul>
+                <p>Comments:</p>
+                <ul>
                 {comments.map((comment) => (
-                  <li key={comment.id}>{comment.text}</li>
+                    <li key={comment.id}>{comment.text}</li>
                 ))}
-              </ul>
+                </ul>
             </>
-          )}
+            )}
         </>
-      ) : (
+        ) : (
         <>
-          <h2>Passenger</h2>
-          <p>Offer: {post.offer}</p>
-          <p>Event: {post.event}</p>
-          <p>Location: {post.location}</p>
-          <p>Details: {post.details}</p>
-          <p>Request: {post.request}</p>
-          {comments.length > 0 && (
+            <h2>{post.request}</h2>
+            <p>Passenger</p>
+            <p>Offer: {post.offer}</p>
+            <p>Event: {post.event}</p>
+            <p>Location: {post.location}</p>
+            <p>Details: {post.details}</p>
+            {comments.length > 0 && (
             <>
-              <p>Comments:</p>
-              <ul>
+                <p>Comments:</p>
+                <ul>
                 {comments.map((comment) => (
-                  <li key={comment.id}>{comment.text}</li>
+                    <li key={comment.id}>{comment.text}</li>
                 ))}
-              </ul>
+                </ul>
             </>
-          )}
+            )}
         </>
-      )}
-      <input
+        )}
+        <input
         type='text'
         name='comment'
         placeholder='Comment...'
         value={comment}
         onChange={(e) => setComment(e.target.value)}
-      />
-      <button type='button' onClick={handleCommentSubmit}>
+        />
+        <button type='button' onClick={handleCommentSubmit} className='submit-card'>
         Submit
-      </button>
+        </button>
     </div>
-  );
+);
 }
 
 export default PostCard;
