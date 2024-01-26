@@ -129,6 +129,7 @@ function App() {
   return (
     <>
       <header>
+      {user === null ? <h1 className='welcome-statement'> Welcome to JoyRide</h1> : null}
         {user === null && !showSignup ? (
           <Login attemptLogin={attemptLogin} />
         ) : null}

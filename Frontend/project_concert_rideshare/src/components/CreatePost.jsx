@@ -264,6 +264,8 @@ function CreatePost({ renderTransporterPost, renderPassengerPost, user }) {
     setSwitchPost(!switchPost);
   }
 
+
+
   return (
     <div className="new-post-form">
       <h1 className="create-post-h1"> Create Post </h1>
