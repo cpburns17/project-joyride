@@ -420,7 +420,7 @@ def delete_transporter_post(id):
 @app.get("/api/comments")
 def get_comments():
     all_comments = Comments.query.all()
-    return [c.to_dict(rules=['-comments.']) for c in all_comments]
+    return [c.to_dict() for c in all_comments]
 
 
 @app.post("/api/comments")
