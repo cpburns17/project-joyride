@@ -95,9 +95,10 @@ body {
 }
 
 /* Welcome Page */
-/* .welcome-page {
-  margin-bottom: 400%;
-} */
+.welcome-page {
+  margin-bottom: 7%;
+}
+
 .welcome-statement {
   display: flex;
   justify-content: center;
@@ -183,27 +184,29 @@ body {
 }
 
 .profile-welcome {
-  display: flex;
   text-align: center;
-  align-items: center;
   margin-top: 20%;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 }
 
 .profile-posts {
   display: grid;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-bottom: 3%;
   
 }
 
 .saved-posts {
-  margin: 5%;
+  margin: 2%;
   text-align: center;
   font-style: italic;
 }
 
-
+.user-info {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 3%;
+}
 /* Render Posts */
 /* 
 .render-posts {

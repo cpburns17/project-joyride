@@ -48,12 +48,12 @@ function Profile() {
 return (
     <div className='profile'>
         <h1 className='profile-welcome'>Welcome, {user.name}</h1>
-            <p> - username: {user.username}</p>
-            <p>- age: {user.age}</p>
-            <p>- social media: {user.social} </p>
-            <h1 className='saved-posts'>Saved Posts:</h1>
+            <p className='user-info'> Username: {user.username}</p>
+            <p className='user-info'>Age: {user.age}</p>
+            <p className='user-info'>Social media: {user.social} </p>
         <div className='profile-page'> 
             <div className='profile-posts'>
+            <h1 className='saved-posts'>Saved Posts:</h1>
                 {renderUserPosts}
             </div>
         </div>

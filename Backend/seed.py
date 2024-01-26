@@ -6,50 +6,52 @@ from faker import Faker
 from flask_bcrypt import Bcrypt
 fake = Faker()
 bcrypt = Bcrypt(app)
-def create_transporter_post():
-    transporters = []
-    for _ in range(5):
-        t = Transporter_Post(
-            vehicle= fake.sentence(nb_words=1),
-            seats = randint(1, 8),
-            event = fake.sentence(nb_words=2),
-            location = fake.address(),
-            details = fake.text(),
-            request = fake.sentence(),
-        )
-        transporters.append(t)
-
-    return transporters
 
 
-def create_user():
+# def create_transporter_post():
+#     transporters = []
+#     for _ in range(5):
+#         t = Transporter_Post(
+#             vehicle= fake.sentence(nb_words=1),
+#             seats = randint(1, 8),
+#             event = fake.sentence(nb_words=2),
+#             location = fake.address(),
+#             details = fake.text(),
+#             request = fake.sentence(),
+#         )
+#         transporters.append(t)
+
+#     return transporters
+
+
+# def create_user():
     
-    users = []
-    for i in range(5):
-        u = User(
-            name = fake.name(),
-            age = randint(18, 99),
-            social = fake.sentence(),
-            username = str(i),
-            password = bcrypt.generate_password_hash(str(i)),
-        )
-        users.append(u)
+#     users = []
+#     for i in range(5):
+#         u = User(
+#             name = fake.name(),
+#             age = randint(18, 99),
+#             social = fake.sentence(),
+#             username = str(i),
+#             password = bcrypt.generate_password_hash(str(i)),
+#         )
+#         users.append(u)
 
-    return users
+#     return users
 
-def create_passenger_post():
-    passengers = []
-    for _ in range(5):
-        p = Passenger_Post(
-            offer = fake.sentence(),
-            event = fake.sentence(nb_words=2),
-            location = fake.address(),
-            details = fake.text(),
-            request = fake.sentence(),
-        )
-        passengers.append(p)
+# def create_passenger_post():
+#     passengers = []
+#     for _ in range(5):
+#         p = Passenger_Post(
+#             offer = fake.sentence(),
+#             event = fake.sentence(nb_words=2),
+#             location = fake.address(),
+#             details = fake.text(),
+#             request = fake.sentence(),
+#         )
+#         passengers.append(p)
 
-    return passengers
+#     return passengers
 
 
 if __name__ == '__main__':
@@ -60,19 +62,19 @@ if __name__ == '__main__':
         Passenger_Post.query.delete()
         User.query.delete()
 
-        print('Seeding Transporter Posts...')
-        transporters = create_transporter_post()
-        db.session.add_all(transporters)
-        db.session.commit()
+        # print('Seeding Transporter Posts...')
+        # transporters = create_transporter_post()
+        # db.session.add_all(transporters)
+        # db.session.commit()
 
-        print('Seeding Passenger Posts...')
-        passengers = create_passenger_post()
-        db.session.add_all(passengers)
-        db.session.commit()
+        # print('Seeding Passenger Posts...')
+        # passengers = create_passenger_post()
+        # db.session.add_all(passengers)
+        # db.session.commit()
 
-        print('Seeding Users...')
-        users = create_user()
-        db.session.add_all(users)
-        db.session.commit()
+        # print('Seeding Users...')
+        # users = create_user()
+        # db.session.add_all(users)
+        # db.session.commit()
 
-        print('Seeding complete!')
+        # print('Seeding complete!')
