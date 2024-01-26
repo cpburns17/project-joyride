@@ -23,9 +23,7 @@ function Navbar({ setFilterValue, user, setUser, isLoggedIn, setIsLoggedIn }) {
         <NavLink to="/profile" className="nav-link">
           Profile
         </NavLink>
-        <NavLink to="/saved" className="nav-link">
-          Saved
-        </NavLink>
+
         <div className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"

@@ -39,16 +39,25 @@ function Profile() {
     
     console.log(filteredUserPosts)
 
+    filteredUserPosts.sort((a, b) => a.id - b.id);
+
     const renderUserPosts = filteredUserPosts.map((post) => <PostCard key={post.type + post.id} post={post}/>)
 
     
 
-    return (
-        <div className='profile-page'>
-            <h1 className='profile-welcome'>Welcome {user.name}</h1>
-            {renderUserPosts}
+return (
+    <div className='profile'>
+        <h1 className='profile-welcome'>Welcome, {user.name}</h1>
+            <p>username: {user.username}</p>
+            <p>age: {user.age}</p>
+            <p>social media: {user.social} </p>
+        <div className='profile-page'> 
+            <div className='profile-posts'>
+                {renderUserPosts}
+            </div>
         </div>
-    )
+    </div>
+)
 }
 
 export default Profile

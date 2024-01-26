@@ -131,6 +131,7 @@ body {
   
 }
 .render-posts {
+  display: grid;
   justify-content: center;
 }
 
@@ -167,18 +168,26 @@ body {
 
 /* Profile  */
 
-.profile-page {
-  justify-content: center;
+.profile {
   margin: 3%;
-  text-align: center;
+}
+
+.profile-page {
+  padding: 2%;
+  background-color: white;
+  border-radius: 2cap;
 }
 
 .profile-welcome {
   display: flex;
-  justify-content: center;
+  text-align: center;
   align-items: center;
   margin-top: 20%;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
+}
+
+.profile-posts {
+  display: grid;
 }
 
 

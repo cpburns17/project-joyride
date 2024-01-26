@@ -1,8 +1,8 @@
 import React from 'react'
 
 function Welcome() {
-    return (
-        // <body>
+
+return (
     <div className='welcome-page'>
         <h1 className='welcome-statement'> Welcome to JoyRide</h1>
         <p className='bio'>
@@ -18,9 +18,7 @@ function Welcome() {
             “My wife and I were looking for someone to sober drive our car to the Mets game last week. Turns out JoyRide has plenty of people who are willing to drive for a free ticket!" - Eduardo, 41
         </p>
     </div>
-    // </body>
-    )
-
+);
 }
 
 export default Welcome

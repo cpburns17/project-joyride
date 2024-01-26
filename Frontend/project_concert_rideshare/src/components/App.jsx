@@ -5,6 +5,7 @@ import Welcome from "./Welcome";
 import Carousel from "./Carousel";
 import Jumbotron from './Jumbotron';
 import Login from './Login'
+import { useNavigate } from 'react-router-dom';
 
 import { Outlet } from "react-router-dom";
 
@@ -12,6 +13,9 @@ function App() {
     const [filterValue, setFilterValue] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null)
+
+        const navigate = useNavigate();
+
 
     console.log(isLoggedIn)
     console.log(user)
