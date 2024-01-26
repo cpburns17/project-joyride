@@ -4,9 +4,9 @@ function Welcome() {
 
 return (
     <div className='welcome-page'>
-        <h1 className='welcome-statement'> Welcome to JoyRide</h1>
+        {/* <h1 className='welcome-statement'> Welcome to JoyRide</h1> */}
         <p className='bio'>
-            At JoyRide, we know how expensive transportation is in NYC. We also know that other ride sharing apps don't always guarantee you'll be traveling with someone who shares a common love for music, sports and other types of events. Our solution to this is to connect drivers and passengers from these inclusive communities, while also making commuting more affordable and fun!
+            At JoyRide, we know how expensive transportation is in NYC. We also know that other ride sharing apps don't always guarantee you'll be traveling with someone who shares a common love for music, sports and other types of events. Our solution to this is to connect drivers and passengers from these inclusive communities, while also making commuting more affordable and fun. Signup below to get started!
         </p>
         <p className='testimonials'>
             “I was so excited to attend the Grateful Dead concert, but none of my friends were able to go. Lucky for me, I found a ride with some incredible people through JoyRide, and now I have a new group of friends who share the same interest in music as me!” - Kevin, 33             

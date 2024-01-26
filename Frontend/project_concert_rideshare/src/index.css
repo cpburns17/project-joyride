@@ -103,15 +103,18 @@ body {
   justify-content: center;
   margin-top: 2%;
   margin: 5%;
-  font-family: sans-serif;
+  font-family: Calisto MT, Bookman Old Style, Bookman, Goudy Old Style, Garamond, Hoefler Text, Bitstream Charter, Georgia, serif;
   text-align: center;
+
 }
 
 .bio {
   display: flex;
   justify-content: center;
   margin: 5%;
-  font-family: sans-serif;
+  padding-left: 20%;
+  padding-right: 20%;
+  font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -122,12 +125,17 @@ body {
   justify-content: left;
   flex-wrap: wrap;
   margin: 2%;
+  
   font-style: italic;
   font-size: 15px;
 }
 
+
+/* CREATE POST FORM  */
+
 .create-post-h1 {
-  justify-content: center;
+  text-align: center;
+  padding: 2%;
   
 }
 .render-posts {
@@ -168,10 +176,6 @@ body {
 
 /* Profile  */
 
-.profile {
-  margin: 3%;
-}
-
 .profile-page {
   padding: 2%;
   background-color: white;
@@ -188,6 +192,15 @@ body {
 
 .profile-posts {
   display: grid;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  
+}
+
+.saved-posts {
+  margin: 5%;
+  text-align: center;
+  font-style: italic;
 }
 
 
@@ -196,3 +209,9 @@ body {
 .render-posts {
   margin-bottom: 20%;
 } */
+
+
+@font-face {
+  font-family: 'ShakeMouth';
+  src: url('/Users/connorburns/Library/Fonts/ShakeMouthRegular.ttf') format('truetype')
+}
