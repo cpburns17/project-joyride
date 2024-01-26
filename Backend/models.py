@@ -95,7 +95,7 @@ class Passenger_Post(db.Model, SerializerMixin):
 
 class Comments(db.Model, SerializerMixin):
     __tablename__ = 'comments_table'
-    serialize_rules = ['-passenger.comments', '-transporter.comments', '-user.comments']
+    serialize_rules = [ '-user.comments']
 
     id = db.Column(db.Integer, primary_key = True)
     text = db.Column(db.String, nullable = False)
